@@ -11,8 +11,7 @@
   <a class="skip-link" href="#main">Skip to content</a>
   <header class="site-header {{ '' if is_home else 'compact past-hero' }}" id="site-header">
     <a class="brand" href="{{ url_for('home') }}" aria-label="Chico's Oven home">
-      {% if logo_image %}<img src="{{ url_for('static', filename=logo_image) }}" alt="Chico's Oven">
-      {% else %}<span class="brand-small">FRESH FROM</span><span class="brand-name">the bakery<span class="brand-dot">.</span></span><span class="brand-small">MADE WITH LOVE</span>{% endif %}
+      <img src="{{ url_for('static', filename=logo_image or 'images/logo.webp') }}" alt="Chico's Oven" width="400" height="400">
     </a>
     <button class="nav-toggle" aria-controls="navigation" aria-expanded="false">Menu <span aria-hidden="true">☰</span></button>
     <nav id="navigation" aria-label="Main navigation">

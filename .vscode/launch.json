@@ -1,0 +1,21 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Chico's Oven - Run Website",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "flask",
+      "python": "${workspaceFolder}/.venv/Scripts/python.exe",
+      "cwd": "${workspaceFolder}",
+      "args": ["--app", "bakery/app.py", "run", "--no-debugger", "--no-reload", "--port", "5001"],
+      "console": "internalConsole",
+      "justMyCode": true,
+      "serverReadyAction": {
+        "action": "openExternally",
+        "pattern": "Running on (http://\\S+)",
+        "uriFormat": "%s"
+      }
+    }
+  ]
+}
