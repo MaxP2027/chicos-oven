@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ title }} | Chico's Oven</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <script src="{{ url_for('static', filename='js/main.js') }}" defer></script>
+</head>
+<body class="{{ 'home-page' if is_home else 'inner-page' }}">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header {{ '' if is_home else 'compact past-hero' }}" id="site-header">
+    <a class="brand" href="{{ url_for('home') }}" aria-label="Chico's Oven home">
+      {% if logo_image %}<img src="{{ url_for('static', filename=logo_image) }}" alt="Chico's Oven">
+      {% else %}<span class="brand-small">FRESH FROM</span><span class="brand-name">the bakery<span class="brand-dot">.</span></span><span class="brand-small">MADE WITH LOVE</span>{% endif %}
+    </a>
+    <button class="nav-toggle" aria-controls="navigation" aria-expanded="false">Menu <span aria-hidden="true">☰</span></button>
+    <nav id="navigation" aria-label="Main navigation">
+      <a href="{{ url_for('home') }}" {% if title == 'Home' %}aria-current="page"{% endif %}>Home</a>
+      <a href="{{ url_for('menu') }}" {% if title == 'Menu' %}aria-current="page"{% endif %}>Menu</a>
+      <a href="{{ url_for('donuts') }}" {% if title == 'Donuts' %}aria-current="page"{% endif %}>Donuts</a>
+      <a href="{{ url_for('custom-donuts-gallery') }}" {% if title == 'Custom Donuts Gallery' %}aria-current="page"{% endif %}>Custom Donuts Gallery</a>
+      <a href="{{ url_for('about-us') }}" {% if title == 'About Us' %}aria-current="page"{% endif %}>About Us</a>
+      <div class="more-wrap">
+        <button class="more-toggle" aria-expanded="false" aria-controls="more-links">More <span aria-hidden="true">⌄</span></button>
+        <div class="more-links" id="more-links" hidden>
+          <a href="{{ url_for('contact-us') }}">Contact Us</a>
+          <a href="{{ url_for('privacy-policy') }}">Privacy Policy</a>
+          <a href="{{ url_for('terms-and-conditions') }}">Terms and Conditions</a>
+        </div>
+      </div>
+    </nav>
+  </header>
+  <main id="main">{% block content %}{% endblock %}</main>
+  <footer><a href="{{ url_for('home') }}">Chico's Oven</a><span>A little sweetness, every day.</span><a href="{{ url_for('contact-us') }}">Get in touch ↗</a></footer>
+</body>
+</html>
+
