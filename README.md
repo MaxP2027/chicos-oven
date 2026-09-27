@@ -9,7 +9,7 @@ From this repository in PowerShell:
 
 If you need to create the environment first, run: py -m venv .venv
 
-Open http://127.0.0.1:5000 (do not open HTML files directly).
+Open http://127.0.0.1:5001 (do not open HTML files directly).
 
 See bakery/README.md for the structure and image filenames.
 
