@@ -9,5 +9,24 @@
   <div class="feature-copy"><p class="eyebrow">MEET YOUR NEXT FAVORITE</p><h2 id="chocolate-title">Chocolate<br>Donut</h2><div class="accent-line"></div><a class="text-link" href="{{ url_for('donuts') }}">Discover our donuts ↗</a></div>
   <div class="feature-image" aria-label="Space reserved for a chocolate donut image"><!-- Add your chocolate donut image here. --></div>
 </section>
+<section class="ordering" aria-label="Order from our delivery partners">
+  {# Add each bakery ordering URL and image filename below when ready.
+     Example: {'name': 'DoorDash', 'url': 'YOUR_STORE_URL', 'image': 'images/doordash.png'} #}
+  {% set partners = [
+    {'name': 'DoorDash', 'url': '', 'image': ''},
+    {'name': 'ChowNow', 'url': '', 'image': ''},
+    {'name': 'Slice', 'url': '', 'image': ''}
+  ] %}
+  <div class="ordering-grid">
+    {% for partner in partners %}
+    <a class="ordering-card" {% if partner.url %}href="{{ partner.url }}"{% else %}role="link" aria-disabled="true"{% endif %} aria-label="Order with {{ partner.name }}{{ ' (coming soon)' if not partner.url else '' }}">
+      <span class="ordering-logo">
+        {% if partner.image %}<img src="{{ url_for('static', filename=partner.image) }}" alt="{{ partner.name }}" loading="lazy">{% else %}<span>{{ partner.name }}</span>{% endif %}
+      </span>
+      <span class="ordering-caption">{{ 'Order now' if partner.url else 'Ordering link coming soon' }}{% if partner.url %} <span aria-hidden="true">↗</span>{% endif %}</span>
+    </a>
+    {% endfor %}
+  </div>
+</section>
 {% endblock %}
 
