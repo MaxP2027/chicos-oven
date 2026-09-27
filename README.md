@@ -1,15 +1,43 @@
 # Chico's Oven
 
 Flask bakery website first draft.
+https://maxp2027.github.io/chicos-oven/
 
-From this repository in PowerShell:
+A small business website for Chico's Oven, built with Flask and Jinja2 templates. The site includes a home page, menu, donuts page, custom donuts gallery, about page, contact page, and legal pages (privacy policy and terms and conditions). A build script exports the site as static HTML so it can be hosted on GitHub Pages.
 
-    .\.venv\Scripts\python.exe -m pip install -r bakery/requirements.txt
-    .\.venv\Scripts\python.exe bakery/app.py
-
-If you need to create the environment first, run: py -m venv .venv
-
-Open http://127.0.0.1:5001 (do not open HTML files directly).
-
-See bakery/README.md for the structure and image filenames.
+## Features
+Dynamic page routing — All non-home pages are generated from a single PAGES dictionary in app.py, so adding a new page only requires one new entry and a template file.
+Shared base template — base.html provides a consistent header, navigation bar, and footer across every page, with the active page highlighted in the nav using aria-current="page".
+Responsive navigation — A collapsible mobile menu (nav-toggle) and a "More" dropdown for secondary links (Contact, Privacy Policy, Terms and Conditions).
+Automatic image detection — A Flask context processor (image_file) checks for a logo and hero image across multiple file formats (.png, .jpg, .jpeg, .webp, .svg) and injects whichever one exists into every template.
+Accessibility considerations — Includes a skip-to-content link, aria-label/aria-expanded attributes on interactive elements, and semantic HTML structure.
+Static site export — build_preview.py renders every route to static HTML in a docs/ folder, rewrites internal links for static hosting, copies static assets, and validates that no links are broken and no template tags were left unrendered.
+Tech Stack
+Backend: Python, Flask
+Templating: Jinja2
+Frontend: HTML, CSS, JavaScript
+Deployment: Static export to GitHub Pages via a custom build script
+Project Structure
+chicos-oven/
+├── bakery/
+│   ├── app.py                  # Flask app, routes, and image context processor
+│   ├── templates/
+│   │   ├── base.html           # Shared layout (header, nav, footer)
+│   │   ├── home.html
+│   │   ├── menu.html
+│   │   ├── donuts.html
+│   │   ├── gallery.html
+│   │   ├── about.html
+│   │   ├── contact.html
+│   │   ├── privacy.html
+│   │   └── terms.html
+│   └── static/
+│       ├── css/style.css
+│       ├── js/main.js
+│       └── images/
+├── build_preview.py            # Renders the Flask app into docs/ for GitHub Pages
+├── requirements.txt
+├── docs/                       # Generated static site (output of build_preview.py)
+├── .gitignore
+└── README.md
 
