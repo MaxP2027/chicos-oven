@@ -1,5 +1,19 @@
 # Chico's Oven
 
+## Website preview for class
+
+**[Open the Chico's Oven website](https://MaxP2027.github.io/chicos-oven/)**
+
+This public preview runs on GitHub Pages without Python or VS Code. It displays the Flask-rendered pages, logo, styling, and navigation. Ordering links are placeholders until store URLs are supplied; no backend runs on GitHub Pages.
+
+### One-time publishing setup
+
+In repository **Settings > Pages**, choose **Deploy from a branch**, then **main** and **/docs**, and click **Save**. Wait for the Pages deployment to finish before sharing the link.
+
+### Update the preview after website changes
+
+Run `.\.venv\Scripts\python.exe build_preview.py` from the repository root, then commit and push the updated `docs/` folder along with the source changes. The exporter checks every page and local asset link.
+
 Flask bakery website first draft.
 
 ## Run the local website

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{{ title }} | Chico's Oven</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css', v='ordering-cards-1') }}">
   <script src="{{ url_for('static', filename='js/main.js') }}" defer></script>
 </head>
 <body class="{{ 'home-page' if is_home else 'inner-page' }}">
