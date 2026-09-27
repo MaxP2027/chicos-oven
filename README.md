@@ -6,35 +6,48 @@
 
 This public preview runs on GitHub Pages without Python or VS Code. It displays the Flask-rendered pages, logo, styling, and navigation. Ordering links are placeholders until store URLs are supplied; no backend runs on GitHub Pages.
 
-### One-time publishing setup
+Chico's Oven is a modern bakery-themed Flask website designed to showcase a local bakery brand, highlight menu offerings, and present a polished online presence for customers. The project includes a responsive storefront layout, landing pages for key business sections, and a static export workflow for publishing to GitHub Pages.
 
-In repository **Settings > Pages**, choose **Deploy from a branch**, then **main** and **/docs**, and click **Save**. Wait for the Pages deployment to finish before sharing the link.
+## Project overview
 
-### Update the preview after website changes
+This project was built as a small but complete web experience for a bakery business. It includes:
 
-Run `.\.venv\Scripts\python.exe build_preview.py` from the repository root, then commit and push the updated `docs/` folder along with the source changes. The exporter checks every page and local asset link.
+- A visually rich landing page with a hero section and brand messaging
+- Menu and donut-specific content pages
+- About, contact, gallery, privacy, and legal pages
+- Fixed navigation and scrolling effects for a premium storefront feel
+- Flask route-based page generation for clean, maintainable site structure
+- Static export support for GitHub Pages publishing
 
-Flask bakery website first draft.
+## Tech stack
 
-## Run the local website
+- Python
+- Flask
+- HTML
+- CSS
+- JavaScript
+- GitHub Pages-compatible static export
 
-Open this repository folder in VS Code. In Run and Debug, choose **Chico's Oven - Run Website**, then press **Ctrl + F5**.
+## Repository structure
 
-Alternatively, run these commands in PowerShell from the repository folder:
+- `bakery/app.py` — Flask application and route definitions
+- `bakery/templates/` — page templates for the site
+- `bakery/static/` — CSS, JavaScript, and image assets
+- `build_preview.py` — renders the Flask pages into the `docs/` folder for static hosting
+- `docs/` — generated GitHub Pages output
+
+## Local installation
+
+From the repository root in PowerShell:
 
 ```powershell
-.\.venv\Scripts\python.exe -m pip install -r bakery/requirements.txt
-.\.venv\Scripts\python.exe -m flask --app bakery/app.py run --port 5001
-```
+py -m venv .venv
+python.exe -m pip install -r requirements.txt
 
-If you need to create the environment first, run `py -m venv .venv`.
-
-Once Flask displays `Running on http://127.0.0.1:5001`, open the [local website preview](http://127.0.0.1:5001).
 
 **This is a local preview, not a public website.** The link only works on the computer running Flask, while the server is running. Putting this link on GitHub does not host the app. If you see "connection refused," start Flask using one of the methods above.
 
 Do not open HTML templates directly. Flask must render them to load the styling, images, and page content.
 
-Note: running `bakery/app.py` directly uses port 5000 instead. The commands above and the VS Code launch configuration both use port 5001.
 
 See [bakery/README.md](bakery/README.md) for the structure and image filenames.
